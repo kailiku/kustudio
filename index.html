@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KU Studio | Bringing Complexity Into Focus</title>
+    <!-- Tailwind CSS is handled via the build process, but we ensure the root exists -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- This script tells Vite where to find your React code -->
+    <script type="module">
+      import React from 'react';
+      import ReactDOM from 'react-dom/client';
+      import App from './KUStudio.jsx';
+      import './index.css';
+
+      ReactDOM.createRoot(document.getElementById('root')).render(
+        React.createElement(React.StrictMode, null, 
+          React.createElement(App)
+        )
+      );
+    </script>
+  </body>
+</html>
