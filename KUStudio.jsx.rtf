@@ -1,324 +1,0 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2639
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-
-\f0\fs24 \cf0 import React, \{ useState, useEffect \} from 'react';\
-import \{\
- Monitor,\
- Code,\
- Palette,\
- Zap,\
- MessageSquare,\
- ChevronRight,\
- ExternalLink,\
- Github,\
- Twitter,\
- Linkedin,\
- Mail,\
- Menu,\
- X,\
- Target,\
- Cpu,\
- Users,\
- Compass,\
- Focus,\
- MousePointer2\
-\} from 'lucide-react';\
-\
-\
-// Custom SVG Logo component: Precise recreation of the branding\
-// Stylized 'K' and 'U' within a circular frame\
-const KULogo = (\{ className = "w-6 h-6", color = "currentColor" \}) => (\
- <svg\
-   viewBox="0 0 100 100"\
-   fill="none"\
-   xmlns="http://www.w3.org/2000/svg"\
-   className=\{className\}\
- >\
-   \{/* Outer Circular Frame */\}\
-   <circle cx="50" cy="50" r="46" stroke=\{color\} strokeWidth="4.5" />\
-  \
-   \{/* Vertical Diameter (The Spine) */\}\
-   <line x1="50" y1="4" x2="50" y2="96" stroke=\{color\} strokeWidth="4.5" />\
-  \
-   \{/* The 'U' / Left Side Inner Arc */\}\
-   <path\
-     d="M 50 14 A 36 36 0 0 0 50 86"\
-     stroke=\{color\}\
-     strokeWidth="3.5"\
-     fill="none"\
-   />\
-  \
-   \{/* The 'K' / Right Side Diagonal Arms */\}\
-   <line x1="50" y1="50" x2="88" y2="28" stroke=\{color\} strokeWidth="4.5" />\
-   <line x1="50" y1="50" x2="88" y2="72" stroke=\{color\} strokeWidth="4.5" />\
-  \
-   \{/* Right Side Segmented Inner Arcs */\}\
-   <path\
-     d="M 58 17 A 36 36 0 0 1 82 29"\
-     stroke=\{color\}\
-     strokeWidth="3.5"\
-     fill="none"\
-   />\
-   <path\
-     d="M 85 41 A 36 36 0 0 1 85 59"\
-     stroke=\{color\}\
-     strokeWidth="3.5"\
-     fill="none"\
-   />\
-   <path\
-     d="M 82 71 A 36 36 0 0 1 58 83"\
-     stroke=\{color\}\
-     strokeWidth="3.5"\
-     fill="none"\
-   />\
- </svg>\
-);\
-\
-\
-const App = () => \{\
- const [isMenuOpen, setIsMenuOpen] = useState(false);\
- const [scrolled, setScrolled] = useState(false);\
-\
-\
- useEffect(() => \{\
-   const handleScroll = () => setScrolled(window.scrollY > 50);\
-   window.addEventListener('scroll', handleScroll);\
-   return () => window.removeEventListener('scroll', handleScroll);\
- \}, []);\
-\
-\
- const pillars = [\
-   \{\
-     title: "Strategic Advisory & Facilitation",\
-     description: "Turning high-stakes uncertainty into alignment. We help departments synchronize immediate goals with a long-term, sustainable vision.",\
-     icon: <Compass className="w-8 h-8 text-indigo-400" />,\
-     tags: ["Agile Frameworks", "Workplan Sessions", "Alignment"]\
-   \},\
-   \{\
-     title: "Human-Centered Design (HCD)",\
-     description: "Innovation begins with empathy. We leverage deep ethnographic research to uncover the 'why' behind user behavior.",\
-     icon: <Users className="w-8 h-8 text-emerald-400" />,\
-     tags: ["Ethnography", "Prototyping", "User Research"]\
-   \},\
-   \{\
-     title: "Digital Transformation & AI Adoption",\
-     description: "Guiding organizations through the complexities of AI and change management, ensuring systems enhance the human experience.",\
-     icon: <Cpu className="w-8 h-8 text-amber-400" />,\
-     tags: ["AI Strategy", "Change Management", "Digital Roadmap"]\
-   \}\
- ];\
-\
-\
- const NavLink = (\{ href, children \}) => (\
-   <a\
-     href=\{href\}\
-     className="text-gray-400 hover:text-white transition-colors duration-200 font-medium px-4 py-2"\
-     onClick=\{() => setIsMenuOpen(false)\}\
-   >\
-     \{children\}\
-   </a>\
- );\
-\
-\
- return (\
-   <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30 font-sans">\
-     \{/* Navigation */\}\
-     <nav className=\{`fixed top-0 w-full z-50 transition-all duration-300 $\{scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'\}`\}>\
-       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">\
-         <div className="flex items-center gap-3 group cursor-pointer">\
-           <div className="w-10 h-10 bg-slate-900 border border-white/10 rounded-xl flex items-center justify-center shadow-lg group-hover:border-indigo-500/50 transition-all duration-300">\
-             <KULogo className="text-white w-7 h-7" />\
-           </div>\
-           <span className="text-xl font-bold tracking-tighter uppercase">KU Studio</span>\
-         </div>\
-\
-\
-         <div className="hidden md:flex items-center gap-2">\
-           <NavLink href="#philosophy">Philosophy</NavLink>\
-           <NavLink href="#pillars">Focus Areas</NavLink>\
-           <NavLink href="#contact">Contact</NavLink>\
-           <a\
-             href="#contact"\
-             className="ml-4 px-6 py-2.5 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-500 transition-all transform hover:scale-105"\
-           >\
-             Start Focusing\
-           </a>\
-         </div>\
-\
-\
-         <button className="md:hidden text-white" onClick=\{() => setIsMenuOpen(!isMenuOpen)\}>\
-           \{isMenuOpen ? <X size=\{28\} /> : <Menu size=\{28\} />\}\
-         </button>\
-       </div>\
-     </nav>\
-\
-\
-     \{/* Hero Section */\}\
-     <section className="relative pt-32 pb-20 md:pt-52 md:pb-40 overflow-hidden">\
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">\
-         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />\
-         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px]" />\
-       </div>\
-\
-\
-       <div className="max-w-7xl mx-auto px-6 relative z-10">\
-         <div className="max-w-4xl">\
-           <h2 className="text-indigo-400 font-bold tracking-[0.2em] uppercase text-sm mb-6 flex items-center gap-3">\
-             <Focus size=\{18\} /> Bringing Complexity Into Focus\
-           </h2>\
-           <h1 className="text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-[1]">\
-             Resolving the <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">Wicked</span> Problems.\
-           </h1>\
-           <p className="text-xl md:text-2xl text-slate-400 mb-12 leading-relaxed max-w-2xl font-light">\
-             We bridge the gap between organizational challenges and elegant, human-centered solutions.\
-           </p>\
-         </div>\
-       </div>\
-     </section>\
-\
-\
-     \{/* Design Philosophy Section */\}\
-     <section id="philosophy" className="py-32 bg-slate-900/30 border-y border-white/5">\
-       <div className="max-w-7xl mx-auto px-6">\
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">\
-           <div className="relative group">\
-             <div className="absolute inset-0 bg-indigo-500/20 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>\
-             <div className="relative aspect-square bg-slate-950 border border-white/10 rounded-[3rem] flex items-center justify-center p-20">\
-               <KULogo className="w-full h-full text-white/90 animate-pulse" />\
-             </div>\
-           </div>\
-           <div>\
-             <h2 className="text-4xl font-bold mb-8">Our Design Philosophy</h2>\
-             <div className="space-y-6 text-slate-400 text-lg leading-relaxed">\
-               <p>\
-                 Our identity is anchored in the concept of the <span className="text-white font-semibold">Camera Shutter</span>. Much like a lens bringing a blurry image into sharp focus, we specialize in capturing the "moment of truth" within an organization.\
-               </p>\
-               <p>\
-                 At the very heart of our practice sits the <span className="text-indigo-400 font-bold italic">"U"</span>. It represents the <span className="text-white">User</span>, serving as the immovable center of every strategy we design.\
-               </p>\
-               <p>\
-                 Whether we are navigating digital shifts or organizational restructuring, the human element is our north star. We take fragmented goals and resolve them into a single, sharp strategic direction.\
-               </p>\
-             </div>\
-           </div>\
-         </div>\
-       </div>\
-     </section>\
-\
-\
-     \{/* Focus Areas Pillars */\}\
-     <section id="pillars" className="py-32">\
-       <div className="max-w-7xl mx-auto px-6">\
-         <div className="mb-20">\
-           <h2 className="text-3xl md:text-5xl font-bold mb-6">Core Focus Areas</h2>\
-           <p className="text-slate-400 text-lg max-w-2xl">We partner with leadership teams to drive transformation through three primary pillars.</p>\
-         </div>\
-\
-\
-         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">\
-           \{pillars.map((pillar, index) => (\
-             <div key=\{index\} className="p-10 rounded-[2.5rem] bg-slate-900/50 border border-white/5 hover:border-indigo-500/50 transition-all group">\
-               <div className="mb-8 p-4 bg-slate-950 rounded-2xl w-fit group-hover:scale-110 transition-transform">\
-                 \{pillar.icon\}\
-               </div>\
-               <h3 className="text-2xl font-bold mb-4">\{pillar.title\}</h3>\
-               <p className="text-slate-400 mb-8 leading-relaxed">\
-                 \{pillar.description\}\
-               </p>\
-               <div className="flex flex-wrap gap-2">\
-                 \{pillar.tags.map(tag => (\
-                   <span key=\{tag\} className="text-[10px] uppercase tracking-[0.1em] font-bold px-3 py-1.5 bg-white/5 rounded-lg text-slate-300">\
-                     \{tag\}\
-                   </span>\
-                 ))\}\
-               </div>\
-             </div>\
-           ))\}\
-         </div>\
-       </div>\
-     </section>\
-\
-\
-     \{/* Why KU Studio Callout */\}\
-     <section className="py-32 relative overflow-hidden">\
-       <div className="max-w-5xl mx-auto px-6 text-center">\
-         <div className="inline-block px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-400 text-sm font-bold mb-8 uppercase tracking-widest">\
-           The Lens Advantage\
-         </div>\
-         <h2 className="text-3xl md:text-5xl font-bold mb-10 leading-tight">\
-           We don\'92t just offer advice; <br className="hidden md:block" />\
-           <span className="text-indigo-400">we provide the lens.</span>\
-         </h2>\
-         <p className="text-xl text-slate-400 mb-12 max-w-3xl mx-auto">\
-           By combining the rigor of Agile frameworks with the empathy of Design Thinking, we help you cut through the noise and see your path forward with total clarity.\
-         </p>\
-         <div className="p-12 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-[3rem] text-white shadow-2xl">\
-           <h3 className="text-3xl font-bold mb-4 italic">"Capturing insight. Framing strategy. Delivering impact."</h3>\
-         </div>\
-       </div>\
-     </section>\
-\
-\
-     \{/* Contact Section */\}\
-     <section id="contact" className="py-32 bg-slate-950">\
-       <div className="max-w-7xl mx-auto px-6">\
-         <div className="bg-slate-900/50 rounded-[4rem] border border-white/10 p-10 md:p-20 overflow-hidden relative">\
-           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20">\
-             <div>\
-               <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to bring your vision into focus?</h2>\
-               <div className="space-y-6">\
-                 <div className="flex items-center gap-5">\
-                   <div className="w-14 h-14 rounded-2xl bg-indigo-600 flex items-center justify-center">\
-                     <Mail size=\{24\} />\
-                   </div>\
-                   <div>\
-                     <p className="text-slate-500 text-sm font-bold uppercase tracking-wider">Email Us</p>\
-                     <p className="text-xl font-semibold">kailiku@gmail.com</p>\
-                   </div>\
-                 </div>\
-               </div>\
-             </div>\
-            \
-             <div className="space-y-6">\
-               <div className="grid grid-cols-2 gap-6">\
-                 <input type="text" placeholder="Name" className="bg-slate-950 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-indigo-500 transition-all text-white" />\
-                 <input type="email" placeholder="Email" className="bg-slate-950 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-indigo-500 transition-all text-white" />\
-               </div>\
-               <textarea rows="4" placeholder="How can we help you focus?" className="w-full bg-slate-950 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-indigo-500 transition-all resize-none text-white"></textarea>\
-               <button className="w-full py-5 bg-white text-slate-950 font-bold rounded-2xl hover:bg-indigo-50 transition-all text-lg active:scale-95">Send Message</button>\
-             </div>\
-           </div>\
-         </div>\
-       </div>\
-     </section>\
-\
-\
-     \{/* Footer */\}\
-     <footer className="py-16 border-t border-white/5">\
-       <div className="max-w-7xl mx-auto px-6">\
-         <div className="flex flex-col md:flex-row justify-between items-center gap-10">\
-           <div className="flex items-center gap-3">\
-             <KULogo className="text-indigo-500 w-8 h-8" />\
-             <span className="font-bold text-xl tracking-tighter uppercase">KU Studio</span>\
-           </div>\
-          \
-           <div className="flex gap-10 text-slate-500 font-medium">\
-             <a href="#" className="hover:text-white transition-colors">LinkedIn</a>\
-             <a href="#" className="hover:text-white transition-colors">Twitter</a>\
-             <a href="#" className="hover:text-white transition-colors">GitHub</a>\
-           </div>\
-          \
-           <p className="text-slate-500 text-sm">\'a9 2024 KU Studio. All rights reserved.</p>\
-         </div>\
-       </div>\
-     </footer>\
-   </div>\
- );\
-\};\
-\
-\
-export default App;}
